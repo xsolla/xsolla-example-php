@@ -11,6 +11,7 @@ Differences with server-side integration:
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
 ## Setup Instructions
+Video instruction - https://www.youtube.com/watch?v=sFxa2rZvF2Y
 
 ### 1. Copy `.env.example` to `.env`
 ```bash
@@ -42,7 +43,8 @@ In you Xsolla Publisher Account -> your project -> Project settings -> Webhooks
 OR open the page: https://publisher.xsolla.com/<YOUR_MERCHANT>/projects/<YOUR_PROJECT>/edit/webhooks/
 
 Your should set your webhook handler URL. 
-In this example its will be: https://<your\>.ngrok-free.app/**webhook.php**
+In this example its will be:  
+https://<your\>.ngrok-free.app/**webhook.php**
 
 ![screenshot](doc/img/where-put-webhook.png)
 
