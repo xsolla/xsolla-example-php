@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  xsolla_example:
+    container_name: xsolla_example
+    build:
+      context: build
+      dockerfile: Dockerfile
+      args:
+        - XDEBUG_ENABLED=${XDEBUG_ENABLED}
+    ports:
+      - "${BACKEND_PORT}:8080"
+      - "${NGROK_PORT}:4040"
+    stop_grace_period: 0s
+    volumes:
+      - ../:/app/xsolla-example
+      - ./build/extra-php.ini:/usr/local/etc/php/conf.d/extra-php.ini
+      - ./build/ngrok.yml:/root/.config/ngrok/ngrok.yml
+    command: > 
+      bash -c "echo 'composer install:' && composer install -v && 
+               echo 'start php server:' && cd public ; php -S 0.0.0.0:8080"
+    environment:
+      PHP_IDE_CONFIG: serverName=xsolla-example
+      NGROK_AUTHTOKEN: ${NGROK_AUTH_TOKEN}
